@@ -20,4 +20,11 @@ class TypedDataArgumentsPackage extends BasePackage
     {
         return __DIR__;
     }
+
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        sm()->addArgumentProcessor(service(TypedDataArgumentProcessor::class));
+    }
 }
