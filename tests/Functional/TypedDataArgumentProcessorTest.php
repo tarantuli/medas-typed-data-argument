@@ -7,7 +7,6 @@ namespace Medas\TypedDataArgumentsTest\Functional;
 use Medas\TypedDataArguments\TypedDataArgumentProcessor;
 use Medas\TypedDataArgumentsTest\MockUps\{TypedDataDefinition, TypedDataMethods};
 use PHPUnit\Framework\TestCase;
-use function PHPUnit\Framework\assertEquals;
 
 class TypedDataArgumentProcessorTest extends TestCase
 {
@@ -49,6 +48,6 @@ class TypedDataArgumentProcessorTest extends TestCase
     public function testSetNull(): void
     {
         $result = $this->getTypedData(['nullableString' => null]);
-        assertEquals(null, $result->nullableString);
+        self::assertEquals(null, $result->nullableString);
     }
 }
