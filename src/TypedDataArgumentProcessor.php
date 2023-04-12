@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Medas\TypedDataArguments;
 
-use Medas\ServiceManager\Attributes\Service;
 use Medas\ServiceManager\ParameterResolving\ArgumentProcessor;
+use Medas\ServiceManager\Service;
 
 #[Service]
 class TypedDataArgumentProcessor implements ArgumentProcessor
