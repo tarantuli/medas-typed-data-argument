@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Medas\TypedDataArguments;
 
-use Medas\ServiceManager\{AsSingleton, BasePackage, ServiceConfig};
+use Medas\Core\AsSingleton;
+use Medas\ServiceManager\{BasePackage, ServiceConfig};
 
 class TypedDataArgumentsPackage extends BasePackage
 {
