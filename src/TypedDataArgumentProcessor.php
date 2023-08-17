@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Medas\TypedDataArguments;
 
 use Medas\Core\Attributes\Service;
-use Medas\ServiceManager\ParameterResolving\ArgumentProcessor;
+use Medas\Core\Interfaces\ArgumentProcessor;
 
 #[Service]
 class TypedDataArgumentProcessor implements ArgumentProcessor
