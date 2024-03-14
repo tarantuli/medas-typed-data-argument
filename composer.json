@@ -1,6 +1,10 @@
 {
     "name": "morphp/medas-typed-data-arguments",
     "description": "Medas typed data arguments",
+    "keywords": [
+        "services",
+        "data manipulation"
+    ],
     "authors": [
         {
             "name": "Patrick Morpey",
