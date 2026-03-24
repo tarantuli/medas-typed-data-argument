@@ -7,5 +7,4 @@ namespace Medas\TypedDataArguments;
 #[\Attribute(\Attribute::TARGET_PARAMETER)]
 class TypedData
 {
-
 }
