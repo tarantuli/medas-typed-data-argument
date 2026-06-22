@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Medas\TypedDataArguments;
 
-use Medas\Core\{AsSingleton, BasePackage, Interfaces\ServiceConfig};
+use Medas\Core\{AsSingleton, BasePackage, Interfaces\ServiceConfigBuilder};
 
 class TypedDataArgumentsPackage extends BasePackage
 {
@@ -20,9 +20,9 @@ class TypedDataArgumentsPackage extends BasePackage
         return __DIR__;
     }
 
-    public function initialize(ServiceConfig $config): void
+    public function initialize(ServiceConfigBuilder $config): void
     {
-        $config->addArgumentProcessor(service(TypedDataArgumentProcessor::class));
+        $config->addArgumentProcessor(TypedDataArgumentProcessor::class);
 
         parent::initialize($config);
     }

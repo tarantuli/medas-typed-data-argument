@@ -18,7 +18,7 @@ class TypedDataArgumentProcessor implements ArgumentProcessor
         $type = $parameter->getType();
 
         if (!$type instanceof \ReflectionNamedType) {
-            throw new \Exception('parameter marked as TypedData should have a named type as its parameter type');
+            throw new Exceptions\ParameterMustHaveNamedType($parameter);
         }
 
         $object = new ($type->getName());
