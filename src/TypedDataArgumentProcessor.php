@@ -4,15 +4,22 @@ declare(strict_types=1);
 
 namespace Medas\TypedDataArguments;
 
-use Medas\Core\{Attributes\Service, Interfaces\ArgumentProcessor};
+use Medas\Core\{
+    Attributes\Service,
+    CompiledValue,
+    Interfaces\CompilableArgumentProcessor,
+    ProcessesByCompiling
+};
 
 #[Service]
-class TypedDataArgumentProcessor implements ArgumentProcessor
+class TypedDataArgumentProcessor implements CompilableArgumentProcessor
 {
-    public function process(\ReflectionParameter|\ReflectionProperty $parameter, mixed $argument): mixed
+    use ProcessesByCompiling;
+
+    public function compile(\ReflectionParameter|\ReflectionProperty $parameter): CompiledValue|null
     {
         if (!attribute(TypedData::class, $parameter)) {
-            return $argument;
+            return null;
         }
 
         $type = $parameter->getType();
@@ -21,7 +28,15 @@ class TypedDataArgumentProcessor implements ArgumentProcessor
             throw new Exceptions\ParameterMustHaveNamedType($parameter);
         }
 
-        $object = new ($type->getName());
+        return new CompiledValue($type->getName());
+    }
+
+    /**
+     * @param CompiledValue $compiled
+     */
+    public function processCompiled(object $compiled, mixed $argument): mixed
+    {
+        $object = new ($compiled->value);
 
         foreach ($argument as $property => $value) {
             // This does not throw type errors, like direct assignment does:
